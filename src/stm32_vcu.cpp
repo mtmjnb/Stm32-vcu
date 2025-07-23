@@ -78,6 +78,7 @@
 #include "bms.h"
 #include "simpbms.h"
 #include "leafbms.h"
+#include "leafdualbms.h"
 #include "daisychainbms.h"
 #include "outlanderCharger.h"
 #include "Can_OBD2.h"
@@ -184,6 +185,7 @@ static Shifter* selectedShifter = &NoGearLever;
 static BMS BMSnone;
 static SimpBMS BMSsimp;
 static LeafBMS BMSleaf;
+static LeafDualBMS BMSDualleaf;
 static DaisychainBMS BMSdaisychain;
 static KangooBMS BMSRenaultKangoo33;
 static DCDC DCDCnone;
@@ -905,6 +907,9 @@ static void UpdateBMS()
         break;
     case BMSModes::BMSModeLeafBMS:
         selectedBMS = &BMSleaf;
+        break;
+    case BMSModes::BMSModeLeafDualBMS:
+        selectedBMS = &BMSDualleaf;
         break;
     case BMSModes::BMSModeDaisychainSingleBMS:
     case BMSModes::BMSModeDaisychainDualBMS:

@@ -1317,12 +1317,9 @@ void Param::Change(Param::PARAM_NUM paramNum) {
     break;
   }
 
-  if (Param::GetInt(Param::reversemotor) != 0) {
-    if (Param::GetInt(Param::Inverter) == InvModes::RearOutlander) {
-
-    } else {
-      Param::SetInt(Param::reversemotor, 0);
-    }
+  if (Param::GetInt(Param::reversemotor) != 0 &&
+      !selectedInverter->SupportsReverseMotor()) {
+    Param::SetInt(Param::reversemotor, 0);
   }
 
   Throttle::potmin[0] = Param::GetInt(Param::potmin);
